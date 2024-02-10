@@ -7,14 +7,18 @@ class GetCategoriesService {
       {required String categoryName}) async {
     var response = await http.get(
         Uri.parse("https://fakestoreapi.com/products/category/$categoryName"));
-
-    List<dynamic> data = jsonDecode(response.body);
-    List<ProductModel> productModel = [];
-    for (int i = 0; i < data.length; i++) {
-      productModel.add(
-        ProductModel.fromJson(data[i]),
-      );
+    if (response.statusCode == 200) {
+      List<dynamic> data = jsonDecode(response.body);
+      List<ProductModel> productModel = [];
+      for (int i = 0; i < data.length; i++) {
+        productModel.add(
+          ProductModel.fromJson(data[i]),
+        );
+      }
+      return productModel;
+    } else {
+      throw Exception(
+          "there is a problem with status code ${response.statusCode}");
     }
-    return productModel;
   }
 }
