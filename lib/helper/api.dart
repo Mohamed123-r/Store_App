@@ -28,7 +28,32 @@ class Api {
     http.Response response =
         await http.post(Uri.parse(url), body: body, headers: header);
     if (response.statusCode == 200) {
-    return jsonDecode(response.body);
+      return jsonDecode(response.body);
+    } else {
+      throw Exception(
+          "there is a problem with status code ${response.statusCode}");
+    }
+  }
+
+  Future<dynamic> put({
+    required String url,
+    @required dynamic body,
+    @required String? token,
+  }) async {
+    Map<String, String> header = {};
+    header.addAll(
+      {'Content-Type': "application/x-www-form-urlencoded"},
+    );
+
+    if (token != null) {
+      header.addAll({
+        "Authorization": "Basic $token",
+      });
+    }
+    http.Response response =
+        await http.post(Uri.parse(url), body: body, headers: header);
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
     } else {
       throw Exception(
           "there is a problem with status code ${response.statusCode}");
