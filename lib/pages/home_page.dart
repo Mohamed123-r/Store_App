@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store/widgets/custom_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -23,6 +24,8 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+      body: CustomCard(),
     );
   }
 }
+
