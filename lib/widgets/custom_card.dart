@@ -14,29 +14,27 @@ class CustomCard extends StatelessWidget {
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                color: Colors.grey,
-                spreadRadius: 1,
-                blurRadius: 90,
-                offset: Offset(0, 10),
+                color: Colors.grey.shade300,
+                spreadRadius: 0.5,
+                blurRadius: 10,
+                offset: Offset(1, 10),
               ),
             ],
           ),
           child: Card(
             color: Colors.white,
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(8.0),
               child: Column(
-                mainAxisSize: MainAxisSize.min,
+
+                mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 55.0),
-                    child: Text(
-                      "mohamed attalla",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey[700],
-                      ),
+                  Text(
+                    "mohamed attalla",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey[700],
                     ),
                   ),
                   Row(
@@ -64,7 +62,7 @@ class CustomCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          left: 70,
+          left: 60,
           top: -60,
           child: Image.network(
             "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
