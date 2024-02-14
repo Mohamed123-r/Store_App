@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import '../models/product_model.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({
-    super.key,
-  });
+  CustomCard({super.key, required this.productModel});
+
+  ProductModel productModel;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class CustomCard extends StatelessWidget {
                 color: Colors.grey.shade300,
                 spreadRadius: 0.5,
                 blurRadius: 10,
-                offset: Offset(1, 10),
+                offset: const Offset(1, 10),
               ),
             ],
           ),
@@ -26,12 +27,13 @@ class CustomCard extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
-
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "mohamed attalla",
+                    productModel.title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey[700],
@@ -40,16 +42,16 @@ class CustomCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        r"$225",
+                        r"$ " + productModel.price.toString(),
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.grey[800],
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       IconButton(
                         onPressed: () {},
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.favorite,
                           color: Colors.red,
                         ),
@@ -65,7 +67,7 @@ class CustomCard extends StatelessWidget {
           left: 60,
           top: -60,
           child: Image.network(
-            "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+            productModel.image,
             height: 120,
             width: 120,
           ),

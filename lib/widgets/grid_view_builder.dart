@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:store/models/product_model.dart';
 import 'custom_card.dart';
 
 class GridViewBuilder extends StatelessWidget {
-  const GridViewBuilder({super.key});
+  GridViewBuilder({super.key, required this.product});
+
+  List<ProductModel> product;
 
   @override
   Widget build(BuildContext context) {
-    return  GridView.builder(
+    return GridView.builder(
       physics: const BouncingScrollPhysics(),
       clipBehavior: Clip.none,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -15,8 +18,11 @@ class GridViewBuilder extends StatelessWidget {
         mainAxisSpacing: 75,
         crossAxisSpacing: 10,
       ),
+      itemCount: product.length,
       itemBuilder: (BuildContext context, int index) {
-        return const CustomCard();
+        return CustomCard(
+          productModel: product[index],
+        );
       },
     );
   }

@@ -38,7 +38,10 @@ class HomePage extends StatelessWidget {
           future: AllProduceService().getAllProduct(),
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
             if (snapshot.hasData) {
-              return const GridViewBuilder();
+              List<ProductModel> product = snapshot.data;
+              return GridViewBuilder(
+                product: product,
+              );
             } else {
               return const Center(
                 child: CircularProgressIndicator(),
