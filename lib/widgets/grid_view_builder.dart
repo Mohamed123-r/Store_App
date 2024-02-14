@@ -21,20 +21,8 @@ class GridViewBuilder extends StatelessWidget {
       ),
       itemCount: product.length,
       itemBuilder: (BuildContext context, int index) {
-        return GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return  UpdateProductPage();
-                },
-              ),
-            );
-          },
-          child: CustomCard(
-            productModel: product[index],
-          ),
+        return CustomCard(
+          productModel: product[index],
         );
       },
     );
