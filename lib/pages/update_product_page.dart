@@ -3,7 +3,12 @@ import 'package:store/widgets/custom_button.dart';
 import 'package:store/widgets/custom_text_field.dart';
 
 class UpdateProductPage extends StatelessWidget {
-  const UpdateProductPage({super.key});
+  UpdateProductPage({super.key});
+
+  String? productName;
+  String? desc;
+  String? image;
+  num? price;
 
   @override
   Widget build(BuildContext context) {
@@ -23,24 +28,37 @@ class UpdateProductPage extends StatelessWidget {
               children: [
                 CustomFormTextField(
                   hintText: "Product Name ",
+                  onChanged: (data){
+                    productName=data;
+                  },
                 ),
                 const SizedBox(
                   height: 15,
                 ),
                 CustomFormTextField(
                   hintText: "Description ",
+                  onChanged: (data){
+                    desc=data;
+                  },
                 ),
                 const SizedBox(
                   height: 15,
                 ),
                 CustomFormTextField(
+                  textInputType: TextInputType.number,
                   hintText: "Price ",
+                  onChanged: (data){
+                    price=int.parse(data);
+                  },
                 ),
                 const SizedBox(
                   height: 15,
                 ),
                 CustomFormTextField(
                   hintText: "Image ",
+                  onChanged: (data){
+                    image=data;
+                  },
                 ),
                 const SizedBox(
                   height: 50,
