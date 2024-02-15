@@ -4,9 +4,12 @@ import 'package:store/services/update_product_service.dart';
 import 'package:store/widgets/custom_button.dart';
 import 'package:store/widgets/custom_text_field.dart';
 
-class UpdateProductPage extends StatefulWidget {
-  UpdateProductPage({super.key});
+import '../models/product_model.dart';
 
+class UpdateProductPage extends StatefulWidget {
+  UpdateProductPage({super.key, required this.product});
+
+ final ProductModel product;
   @override
   State<UpdateProductPage> createState() => _UpdateProductPageState();
 }
@@ -83,9 +86,8 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
                             price: price!,
                             description: desc!,
                             image: image!,
-                            category: '');
-
-
+                            category : widget.product.category);
+                        
                       setState(() {
                         isLoading = false;
                       });

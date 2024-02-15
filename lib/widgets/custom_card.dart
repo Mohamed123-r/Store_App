@@ -14,9 +14,9 @@ class CustomCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context ) {
-              return  UpdateProductPage(
-
+            builder: (context) {
+              return UpdateProductPage(
+                product: productModel,
               );
             },
           ),
