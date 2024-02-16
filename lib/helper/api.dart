@@ -50,9 +50,11 @@ class Api {
         "Authorization": "Basic $token",
       });
     }
+    print("url =$url body=$body token=$token");
     http.Response response =
-        await http.post(Uri.parse(url), body: body, headers: header);
+        await http.put(Uri.parse(url), body: body, headers: header);
     if (response.statusCode == 200) {
+      print(jsonDecode(response.body));
       return jsonDecode(response.body);
     } else {
       throw Exception(

@@ -9,7 +9,8 @@ import '../models/product_model.dart';
 class UpdateProductPage extends StatefulWidget {
   UpdateProductPage({super.key, required this.product});
 
- final ProductModel product;
+  final ProductModel product;
+
   @override
   State<UpdateProductPage> createState() => _UpdateProductPageState();
 }
@@ -78,16 +79,11 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
                   ),
                   CustomButton(
                     text: "Update",
-                    onPressed: () {
+                    onPressed: () async {
                       isLoading = true;
                       setState(() {});
-                        UpdateProductService().updateProductService(
-                            title: productName!,
-                            price: price!,
-                            description: desc!,
-                            image: image!,
-                            category : widget.product.category);
-                        
+                      await updateProduct();
+                      print("object");
                       setState(() {
                         isLoading = false;
                       });
@@ -100,5 +96,15 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
         ),
       ),
     );
+  }
+
+  Future<void> updateProduct() async {
+    await UpdateProductService().updateProductService(
+        title: productName == null ? widget.product.title : productName!,
+        price: price == null ? widget.product.price.toString() : price!,
+        description: desc == null ? widget.product.description : desc!,
+        image: image == null ? widget.product.image : image!,
+        category: widget.product.category,
+        id: widget.product.id);
   }
 }
